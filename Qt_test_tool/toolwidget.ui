@@ -26,6 +26,19 @@
     <string>AC_Check</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="ButtonShip_Mode">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>90</y>
+     <width>121</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Ship_Mode</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
