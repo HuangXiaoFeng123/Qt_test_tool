@@ -18,6 +18,7 @@
 
 #define EC_EXTRA_CMD_PORT 0x6C
 #define EC_EXTRA_DATA_PORT 0x68
+#define EC_CMD_PORT  0x66
 
 QT_BEGIN_NAMESPACE
 namespace Ui
@@ -41,6 +42,7 @@ public:
     quint32 EcWaitIBE(quint8 CmdPort);
     quint32 EcSendCommand(quint8 CmdPort,quint8 Cmd);
     void Enter_ShipMode(void);
+    void Enter_Mirror(void);
 
 private:
     Ui::ToolWidget *ui;

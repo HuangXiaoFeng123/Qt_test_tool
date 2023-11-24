@@ -4,7 +4,7 @@
 ToolWidget::ToolWidget(QWidget *parent): QWidget(parent), ui(new Ui::ToolWidget)
 {
     ui->setupUi(this);
-    setWindowTitle("Tool v0.02");
+    setWindowTitle("Tool v0.03");
     count=0;
     EC_Init();
 }
@@ -25,6 +25,7 @@ void ToolWidget::EC_Init(void)
     {
         connect(ui->ButtonAC,&QPushButton::clicked,this,&ToolWidget::Update_AC_State);
         connect(ui->ButtonShip_Mode,&QPushButton::clicked,this,&ToolWidget::Enter_ShipMode);
+        connect(ui->ButtonMirror,&QPushButton::clicked,this,&ToolWidget::Enter_Mirror);
     }
 }
 
@@ -89,9 +90,9 @@ quint32 ToolWidget::EcSendCommand(quint8 CmdPort, quint8 Cmd)
 
 void ToolWidget::Update_AC_State(void)
 {
-    unsigned char tmp_state=EC_Read_Data(0x380);
-    qDebug()<<QString::number(tmp_state);
-    if((tmp_state&0x1)==1)
+    unsigned char ac_state=EC_Read_Data(0x380);
+    qDebug()<<QString::number(ac_state);
+    if((ac_state&0x1)==1)
     {
         QMessageBox::information(this,"AC state","AC在位");
     }
@@ -132,12 +133,29 @@ void ToolWidget::Enter_ShipMode(void)
         return ;
     }
     //Enter shipMode fail
-    QMessageBox::information(this,"AC State","进入ShipMode失败");
+    QMessageBox::information(this,"Information","进入ShipMode失败");
 }
 
-
-
-
-
-
-
+void ToolWidget::Enter_Mirror(void)
+{
+    unsigned char ac_state=EC_Read_Data(0x380);
+    if((ac_state&0x1)==1)
+    {
+        for(int i=0;i<4;i++)
+        {
+            if(EcSendCommand(EC_CMD_PORT,0x50)==ERROR_SUCCESS)
+            {
+                Sleep(500);
+                p.start("shutdown /s /t 3");                           //Enter Mirror successful
+                return ;
+            }
+        }
+    }
+    else
+    {
+        QMessageBox::information(this,"AC State","AC不在位,请插入AC");
+        return ;
+    }
+    //Enter Mirror fail
+    QMessageBox::information(this,"Information","EC mirror 失败");
+}

@@ -21,6 +21,7 @@ class Ui_ToolWidget
 public:
     QPushButton *ButtonAC;
     QPushButton *ButtonShip_Mode;
+    QPushButton *ButtonMirror;
 
     void setupUi(QWidget *ToolWidget)
     {
@@ -33,6 +34,9 @@ public:
         ButtonShip_Mode = new QPushButton(ToolWidget);
         ButtonShip_Mode->setObjectName(QString::fromUtf8("ButtonShip_Mode"));
         ButtonShip_Mode->setGeometry(QRect(80, 90, 121, 51));
+        ButtonMirror = new QPushButton(ToolWidget);
+        ButtonMirror->setObjectName(QString::fromUtf8("ButtonMirror"));
+        ButtonMirror->setGeometry(QRect(80, 170, 121, 51));
 
         retranslateUi(ToolWidget);
 
@@ -44,6 +48,7 @@ public:
         ToolWidget->setWindowTitle(QApplication::translate("ToolWidget", "ToolWidget", nullptr));
         ButtonAC->setText(QApplication::translate("ToolWidget", "AC_Check", nullptr));
         ButtonShip_Mode->setText(QApplication::translate("ToolWidget", "Ship_Mode", nullptr));
+        ButtonMirror->setText(QApplication::translate("ToolWidget", "Mirror", nullptr));
     } // retranslateUi
 
 };
