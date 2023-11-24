@@ -20,6 +20,7 @@ class Ui_ToolWidget
 {
 public:
     QPushButton *ButtonAC;
+    QPushButton *ButtonShip_Mode;
 
     void setupUi(QWidget *ToolWidget)
     {
@@ -29,6 +30,9 @@ public:
         ButtonAC = new QPushButton(ToolWidget);
         ButtonAC->setObjectName(QString::fromUtf8("ButtonAC"));
         ButtonAC->setGeometry(QRect(80, 10, 121, 51));
+        ButtonShip_Mode = new QPushButton(ToolWidget);
+        ButtonShip_Mode->setObjectName(QString::fromUtf8("ButtonShip_Mode"));
+        ButtonShip_Mode->setGeometry(QRect(80, 90, 121, 51));
 
         retranslateUi(ToolWidget);
 
@@ -39,6 +43,7 @@ public:
     {
         ToolWidget->setWindowTitle(QApplication::translate("ToolWidget", "ToolWidget", nullptr));
         ButtonAC->setText(QApplication::translate("ToolWidget", "AC_Check", nullptr));
+        ButtonShip_Mode->setText(QApplication::translate("ToolWidget", "Ship_Mode", nullptr));
     } // retranslateUi
 
 };
