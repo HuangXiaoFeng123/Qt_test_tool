@@ -1,5 +1,7 @@
 # Qt_test_tool£¨This tool base on ITE ec chip£©
 --------------------------------------------------
+5.Adding ec exit control electricity function.
+--------------------------------------------------
 4.Adding ec enter control electricity function.
 --------------------------------------------------
 3.Adding ec mirror function.

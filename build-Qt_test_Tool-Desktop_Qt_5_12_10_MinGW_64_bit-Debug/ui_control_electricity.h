@@ -36,9 +36,9 @@ public:
     QLabel *label_3;
     QHBoxLayout *horizontalLayout_2;
     QSpacerItem *horizontalSpacer_2;
-    QPushButton *ButtonSure;
+    QPushButton *ButtonEnter;
     QSpacerItem *horizontalSpacer;
-    QPushButton *ButtonCancel;
+    QPushButton *ButtonExit;
     QSpacerItem *horizontalSpacer_3;
 
     void setupUi(QWidget *Control_Electricity)
@@ -114,23 +114,23 @@ public:
 
         horizontalLayout_2->addItem(horizontalSpacer_2);
 
-        ButtonSure = new QPushButton(Control_Electricity);
-        ButtonSure->setObjectName(QString::fromUtf8("ButtonSure"));
-        ButtonSure->setMinimumSize(QSize(120, 30));
-        ButtonSure->setMaximumSize(QSize(120, 30));
+        ButtonEnter = new QPushButton(Control_Electricity);
+        ButtonEnter->setObjectName(QString::fromUtf8("ButtonEnter"));
+        ButtonEnter->setMinimumSize(QSize(120, 30));
+        ButtonEnter->setMaximumSize(QSize(120, 30));
 
-        horizontalLayout_2->addWidget(ButtonSure);
+        horizontalLayout_2->addWidget(ButtonEnter);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_2->addItem(horizontalSpacer);
 
-        ButtonCancel = new QPushButton(Control_Electricity);
-        ButtonCancel->setObjectName(QString::fromUtf8("ButtonCancel"));
-        ButtonCancel->setMinimumSize(QSize(120, 30));
-        ButtonCancel->setMaximumSize(QSize(120, 30));
+        ButtonExit = new QPushButton(Control_Electricity);
+        ButtonExit->setObjectName(QString::fromUtf8("ButtonExit"));
+        ButtonExit->setMinimumSize(QSize(120, 30));
+        ButtonExit->setMaximumSize(QSize(120, 30));
 
-        horizontalLayout_2->addWidget(ButtonCancel);
+        horizontalLayout_2->addWidget(ButtonExit);
 
         horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -155,8 +155,8 @@ public:
         label_2->setText(QApplication::translate("Control_Electricity", "%", nullptr));
         label_4->setText(QApplication::translate("Control_Electricity", "~", nullptr));
         label_3->setText(QApplication::translate("Control_Electricity", "%", nullptr));
-        ButtonSure->setText(QApplication::translate("Control_Electricity", "\347\241\256\350\256\244", nullptr));
-        ButtonCancel->setText(QApplication::translate("Control_Electricity", "\345\217\226\346\266\210", nullptr));
+        ButtonEnter->setText(QApplication::translate("Control_Electricity", "\350\277\233\345\205\245\346\216\247\347\224\265", nullptr));
+        ButtonExit->setText(QApplication::translate("Control_Electricity", "\351\200\200\345\207\272\346\216\247\347\224\265", nullptr));
     } // retranslateUi
 
 };

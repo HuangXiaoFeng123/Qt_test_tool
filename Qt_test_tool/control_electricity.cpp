@@ -74,7 +74,7 @@ quint32 Control_Electricity::EcSendCommand(quint8 CmdPort, quint8 Cmd)
     return ERROR_SUCCESS;
 }
 
-void Control_Electricity::on_ButtonSure_clicked(void)
+void Control_Electricity::on_ButtonEnter_clicked(void)
 {
     unsigned char ac_state=EC_Read_Data(0x380);
     int minRSOC=ui->lineEditMin->text().toInt();
@@ -131,4 +131,29 @@ void Control_Electricity::on_ButtonSure_clicked(void)
         return ;
     }
     QMessageBox::information(this,"Information","进入控电模式失败");
+}
+
+void Control_Electricity::on_ButtonExit_clicked(void)
+{
+    for(int i=0;i<4;i++)
+    {
+        if(EcSendCommand(EC_EXTRA_CMD_PORT,0xD4)==ERROR_SUCCESS)
+        {
+            count++;
+            Sleep(100);
+        }
+        if(EcSendCommand(EC_EXTRA_DATA_PORT,0x2A)==ERROR_SUCCESS)
+        {
+            count++;
+            Sleep(100);
+            if(count==2)
+            {
+                count=0;
+                QMessageBox::information(this,"Information","退出控电模式成功");
+                return ;
+            }
+        }
+        count=0;
+    }
+    QMessageBox::information(this,"Information","退出控电模式失败");
 }

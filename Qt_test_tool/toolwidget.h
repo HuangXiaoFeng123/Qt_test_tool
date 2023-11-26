@@ -44,7 +44,7 @@ public:
     quint32 EcSendCommand(quint8 CmdPort,quint8 Cmd);
     void Enter_ShipMode(void);
     void Enter_Mirror(void);
-    void Enter_ControlElectricity(void);
+    void ControlElectricity(void);
 
 private:
     Ui::ToolWidget *ui;

@@ -4,7 +4,7 @@
 ToolWidget::ToolWidget(QWidget *parent): QWidget(parent), ui(new Ui::ToolWidget)
 {
     ui->setupUi(this);
-    setWindowTitle("Tool v0.04");
+    setWindowTitle("Tool v0.05");
     count=0;
     EC_Init();
     electricity_widget=new Control_Electricity();
@@ -32,7 +32,7 @@ void ToolWidget::EC_Init(void)
         connect(ui->ButtonAC,&QPushButton::clicked,this,&ToolWidget::Update_AC_State);
         connect(ui->ButtonShip_Mode,&QPushButton::clicked,this,&ToolWidget::Enter_ShipMode);
         connect(ui->ButtonMirror,&QPushButton::clicked,this,&ToolWidget::Enter_Mirror);
-        connect(ui->ButtonEnter_Electricity,&QPushButton::clicked,this,&ToolWidget::Enter_ControlElectricity);
+        connect(ui->ButtonControl_Electricity,&QPushButton::clicked,this,&ToolWidget::ControlElectricity);
     }
 }
 
@@ -167,7 +167,7 @@ void ToolWidget::Enter_Mirror(void)
     QMessageBox::information(this,"Information","EC mirror 失败");
 }
 
-void ToolWidget::Enter_ControlElectricity(void)
+void ToolWidget::ControlElectricity(void)
 {
     electricity_widget->show();
 }

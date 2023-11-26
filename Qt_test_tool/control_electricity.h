@@ -37,7 +37,8 @@ public:
     quint32 EcSendCommand(quint8 CmdPort,quint8 Cmd);
 
 private slots:
-    void on_ButtonSure_clicked(void);
+    void on_ButtonEnter_clicked(void);
+    void on_ButtonExit_clicked(void);
 
 private:
     Ui::Control_Electricity *ui;
