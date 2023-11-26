@@ -52,6 +52,19 @@
     <string>Mirror</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="ButtonEnter_Electricity">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>250</y>
+     <width>121</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Enter_Electricity</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

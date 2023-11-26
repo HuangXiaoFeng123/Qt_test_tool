@@ -9,13 +9,16 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    control_electricity.cpp \
     main.cpp \
     toolwidget.cpp
 
 HEADERS += \
+    control_electricity.h \
     toolwidget.h
 
 FORMS += \
+    control_electricity.ui \
     toolwidget.ui
 
 DEFINES += WINIO_DLL

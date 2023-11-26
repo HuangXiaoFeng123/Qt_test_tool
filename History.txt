@@ -1,5 +1,29 @@
 #Qt_test_tool
 *****************************************************************************
+Qt version  : 0.04
+PlatForm    : Windows
+Complie Ver: Qt 5.12.0
+CodeBase    : V0.01
+Build Date  : 20231126
+*****************************************************************************
+4.Adding ec enter control electricity function.
+Label             : N/A
+Author            : HuangXiaoFeng
+Issue number  	  : N/A
+Symptom           : N/A
+RootCause         : N/A
+Description       : N/A
+Solution          : N/A
+RelatedFiles     :  
+        modified:   Qt_test_tool/Qt_test_tool.pro
+        new file:   Qt_test_tool/control_electricity.cpp
+        new file:   Qt_test_tool/control_electricity.h
+        new file:   Qt_test_tool/control_electricity.ui
+        modified:   Qt_test_tool/toolwidget.cpp
+        modified:   Qt_test_tool/toolwidget.h
+        modified:   Qt_test_tool/toolwidget.ui
+
+*****************************************************************************
 Qt version  : 0.03
 PlatForm    : Windows
 Complie Ver: Qt 5.12.0

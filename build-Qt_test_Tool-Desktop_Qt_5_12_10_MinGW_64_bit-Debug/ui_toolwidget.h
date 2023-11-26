@@ -22,6 +22,7 @@ public:
     QPushButton *ButtonAC;
     QPushButton *ButtonShip_Mode;
     QPushButton *ButtonMirror;
+    QPushButton *ButtonEnter_Electricity;
 
     void setupUi(QWidget *ToolWidget)
     {
@@ -37,6 +38,9 @@ public:
         ButtonMirror = new QPushButton(ToolWidget);
         ButtonMirror->setObjectName(QString::fromUtf8("ButtonMirror"));
         ButtonMirror->setGeometry(QRect(80, 170, 121, 51));
+        ButtonEnter_Electricity = new QPushButton(ToolWidget);
+        ButtonEnter_Electricity->setObjectName(QString::fromUtf8("ButtonEnter_Electricity"));
+        ButtonEnter_Electricity->setGeometry(QRect(80, 250, 121, 51));
 
         retranslateUi(ToolWidget);
 
@@ -49,6 +53,7 @@ public:
         ButtonAC->setText(QApplication::translate("ToolWidget", "AC_Check", nullptr));
         ButtonShip_Mode->setText(QApplication::translate("ToolWidget", "Ship_Mode", nullptr));
         ButtonMirror->setText(QApplication::translate("ToolWidget", "Mirror", nullptr));
+        ButtonEnter_Electricity->setText(QApplication::translate("ToolWidget", "Enter_Electricity", nullptr));
     } // retranslateUi
 
 };
