@@ -5,6 +5,8 @@ ToolWidget::ToolWidget(QWidget *parent): QWidget(parent), ui(new Ui::ToolWidget)
 {
     ui->setupUi(this);
     setWindowTitle("Tool v0.05");
+    setMinimumSize(300,330);
+    setMaximumSize(300,330);
     count=0;
     EC_Init();
     electricity_widget=new Control_Electricity();

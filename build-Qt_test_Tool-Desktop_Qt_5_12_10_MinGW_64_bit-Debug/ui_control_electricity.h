@@ -45,7 +45,7 @@ public:
     {
         if (Control_Electricity->objectName().isEmpty())
             Control_Electricity->setObjectName(QString::fromUtf8("Control_Electricity"));
-        Control_Electricity->resize(503, 126);
+        Control_Electricity->resize(500, 130);
         gridLayout = new QGridLayout(Control_Electricity);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         verticalLayout = new QVBoxLayout();

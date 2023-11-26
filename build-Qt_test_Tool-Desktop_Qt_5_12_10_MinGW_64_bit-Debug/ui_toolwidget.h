@@ -40,7 +40,7 @@ public:
     {
         if (ToolWidget->objectName().isEmpty())
             ToolWidget->setObjectName(QString::fromUtf8("ToolWidget"));
-        ToolWidget->resize(295, 332);
+        ToolWidget->resize(300, 330);
         gridLayout = new QGridLayout(ToolWidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         horizontalLayout = new QHBoxLayout();
