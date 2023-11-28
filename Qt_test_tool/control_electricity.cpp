@@ -8,6 +8,21 @@ Control_Electricity::Control_Electricity(QWidget *parent) :QWidget(parent),ui(ne
     setMinimumSize(500,130);
     setMaximumSize(500,130);
     count=0;
+    unsigned short control_Mode=EC_Read_Data(0x13B);  //获取当前控电的状态
+    if((control_Mode&0x8)==0x8)                       //进入状态
+    {
+        ui->ButtonEnter->setEnabled(false);
+        ui->ButtonExit->setEnabled(true);
+        ui->lineEditMin->setDisabled(true);
+        ui->lineEditMax->setDisabled(true);
+    }
+    else                                              //退出状态
+    {
+        ui->ButtonEnter->setEnabled(true);
+        ui->ButtonExit->setEnabled(false);
+        ui->lineEditMin->setDisabled(false);
+        ui->lineEditMax->setDisabled(false);
+    }
 }
 
 Control_Electricity::~Control_Electricity(void)
@@ -35,14 +50,14 @@ unsigned char Control_Electricity::EC_Read_Data(unsigned short Addr)
     return data;
 }
 
-quint8 Control_Electricity::IoRead8(quint16 IoIndex)
+quint8 Control_Electricity::IoRead8(quint8 IoIndex)
 {
     DWORD value;
     GetPortVal(IoIndex,&value,0x01);
     return (quint8)value;
 }
 
-bool Control_Electricity::IoWrite8(quint16 IoIndex, quint8 Data)
+bool Control_Electricity::IoWrite8(quint8 IoIndex, quint8 Data)
 {
     SetPortVal(IoIndex,Data,0x01);
     return true;
@@ -113,6 +128,10 @@ void Control_Electricity::on_ButtonEnter_clicked(void)
                     {
                         count=0;
                         QMessageBox::information(this,"Information","进入控电模式成功");
+                        ui->ButtonEnter->setEnabled(false);
+                        ui->ButtonExit->setEnabled(true);
+                        ui->lineEditMin->setDisabled(true);
+                        ui->lineEditMax->setDisabled(true);
                         return ;
                     }
                 }
@@ -131,6 +150,10 @@ void Control_Electricity::on_ButtonEnter_clicked(void)
         return ;
     }
     QMessageBox::information(this,"Information","进入控电模式失败");
+    ui->ButtonEnter->setEnabled(true);
+    ui->ButtonExit->setEnabled(false);
+    ui->lineEditMin->setDisabled(false);
+    ui->lineEditMax->setDisabled(false);
 }
 
 void Control_Electricity::on_ButtonExit_clicked(void)
@@ -150,10 +173,18 @@ void Control_Electricity::on_ButtonExit_clicked(void)
             {
                 count=0;
                 QMessageBox::information(this,"Information","退出控电模式成功");
+                ui->ButtonEnter->setEnabled(true);
+                ui->ButtonExit->setEnabled(false);
+                ui->lineEditMin->setDisabled(false);
+                ui->lineEditMax->setDisabled(false);
                 return ;
             }
         }
         count=0;
     }
     QMessageBox::information(this,"Information","退出控电模式失败");
+    ui->ButtonEnter->setEnabled(false);
+    ui->ButtonExit->setEnabled(true);
+    ui->lineEditMin->setDisabled(true);
+    ui->lineEditMax->setDisabled(true);
 }

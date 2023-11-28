@@ -1,5 +1,7 @@
 # Qt_test_tool£¨This tool base on ITE ec chip£©
 --------------------------------------------------
+7.Optimizing control electricity UI function.
+--------------------------------------------------
 6.Optimizing window sizes.
 --------------------------------------------------
 5.Adding ec exit control electricity function.

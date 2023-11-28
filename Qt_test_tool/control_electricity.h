@@ -31,8 +31,8 @@ public:
     explicit Control_Electricity(QWidget *parent = nullptr);
     ~Control_Electricity(void);
     unsigned char EC_Read_Data(unsigned short Addr);
-    quint8 IoRead8(quint16 IoIndex);
-    bool IoWrite8(quint16 IoIndex,quint8 Data);
+    quint8 IoRead8(quint8 IoIndex);
+    bool IoWrite8(quint8 IoIndex,quint8 Data);
     quint32 EcWaitIBE(quint8 CmdPort);
     quint32 EcSendCommand(quint8 CmdPort,quint8 Cmd);
 
