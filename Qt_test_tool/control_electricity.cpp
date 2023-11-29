@@ -23,11 +23,20 @@ Control_Electricity::Control_Electricity(QWidget *parent) :QWidget(parent),ui(ne
         ui->lineEditMin->setDisabled(false);
         ui->lineEditMax->setDisabled(false);
     }
+    ui->ButtonEnter->setStyleSheet("background-color:rgb(123,198,238)");
+    ui->ButtonExit->setStyleSheet("background-color:rgb(123,198,238)");
 }
 
 Control_Electricity::~Control_Electricity(void)
 {
     delete ui;
+}
+
+void Control_Electricity::paintEvent(QPaintEvent *)
+{
+    QPainter controlDialog_P(this);
+    QPixmap controlDialog_map(":/image/control.jpg");
+    controlDialog_P.drawPixmap(0,0,this->width(),this->height(),controlDialog_map);
 }
 
 unsigned char Control_Electricity::EC_Read_Data(unsigned short Addr)

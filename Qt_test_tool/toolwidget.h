@@ -9,6 +9,7 @@
 #include "control_electricity.h"
 #include <QMessageBox>
 #include <QProcess>
+#include <QPainter>
 #include <QDebug>
 
 #define EC_ADDR_PORT  0x4E
@@ -45,6 +46,9 @@ public:
     void Enter_ShipMode(void);
     void Enter_Mirror(void);
     void ControlElectricity(void);
+
+protected:
+    void paintEvent(QPaintEvent *);
 
 private:
     Ui::ToolWidget *ui;

@@ -55,6 +55,12 @@ public:
         ButtonAC->setObjectName(QString::fromUtf8("ButtonAC"));
         ButtonAC->setMinimumSize(QSize(125, 50));
         ButtonAC->setMaximumSize(QSize(125, 50));
+        QFont font;
+        font.setFamily(QString::fromUtf8("\346\245\267\344\275\223"));
+        font.setPointSize(9);
+        font.setBold(false);
+        font.setWeight(50);
+        ButtonAC->setFont(font);
 
         verticalLayout->addWidget(ButtonAC);
 
@@ -66,6 +72,7 @@ public:
         ButtonShip_Mode->setObjectName(QString::fromUtf8("ButtonShip_Mode"));
         ButtonShip_Mode->setMinimumSize(QSize(125, 50));
         ButtonShip_Mode->setMaximumSize(QSize(125, 50));
+        ButtonShip_Mode->setFont(font);
 
         verticalLayout->addWidget(ButtonShip_Mode);
 
@@ -77,6 +84,7 @@ public:
         ButtonMirror->setObjectName(QString::fromUtf8("ButtonMirror"));
         ButtonMirror->setMinimumSize(QSize(125, 50));
         ButtonMirror->setMaximumSize(QSize(125, 50));
+        ButtonMirror->setFont(font);
 
         verticalLayout->addWidget(ButtonMirror);
 
@@ -88,6 +96,7 @@ public:
         ButtonControl_Electricity->setObjectName(QString::fromUtf8("ButtonControl_Electricity"));
         ButtonControl_Electricity->setMinimumSize(QSize(125, 50));
         ButtonControl_Electricity->setMaximumSize(QSize(125, 50));
+        ButtonControl_Electricity->setFont(font);
 
         verticalLayout->addWidget(ButtonControl_Electricity);
 

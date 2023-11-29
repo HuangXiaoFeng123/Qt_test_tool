@@ -45,6 +45,14 @@
            <height>50</height>
           </size>
          </property>
+         <property name="font">
+          <font>
+           <family>楷体</family>
+           <pointsize>9</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
          <property name="text">
           <string>AC_Check</string>
          </property>
@@ -76,6 +84,14 @@
            <width>125</width>
            <height>50</height>
           </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>楷体</family>
+           <pointsize>9</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
          </property>
          <property name="text">
           <string>Ship_Mode</string>
@@ -109,6 +125,14 @@
            <height>50</height>
           </size>
          </property>
+         <property name="font">
+          <font>
+           <family>楷体</family>
+           <pointsize>9</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
          <property name="text">
           <string>Mirror</string>
          </property>
@@ -140,6 +164,14 @@
            <width>125</width>
            <height>50</height>
           </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>楷体</family>
+           <pointsize>9</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
          </property>
          <property name="text">
           <string>Control_Electricity</string>

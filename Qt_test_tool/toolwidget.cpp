@@ -4,12 +4,16 @@
 ToolWidget::ToolWidget(QWidget *parent): QWidget(parent), ui(new Ui::ToolWidget)
 {
     ui->setupUi(this);
-    setWindowTitle("Tool v0.07");
+    setWindowTitle("Tool v0.08");
     setMinimumSize(300,330);
     setMaximumSize(300,330);
     count=0;
     EC_Init();
     electricity_widget=new Control_Electricity();
+    ui->ButtonAC->setStyleSheet("background-color:rgb(123,198,238)");
+    ui->ButtonShip_Mode->setStyleSheet("background-color:rgb(123,198,238)");
+    ui->ButtonMirror->setStyleSheet("background-color:rgb(123,198,238)");
+    ui->ButtonControl_Electricity->setStyleSheet("background-color:rgb(123,198,238)");
 }
 
 ToolWidget::~ToolWidget(void)
@@ -20,6 +24,13 @@ ToolWidget::~ToolWidget(void)
         delete electricity_widget;
         electricity_widget=NULL;
     }
+}
+
+void ToolWidget::paintEvent(QPaintEvent *)
+{
+    QPainter mainDialog_P(this);
+    QPixmap mainDialog_map(":/image/main_background.jpg");
+    mainDialog_P.drawPixmap(0,0,this->width(),this->height(),mainDialog_map);
 }
 
 void ToolWidget::EC_Init(void)

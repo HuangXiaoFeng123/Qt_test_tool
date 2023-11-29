@@ -7,6 +7,7 @@
 #include "WinIo.h"
 #include "winio_nt.h"
 #include <QMessageBox>
+#include <QPainter>
 #include <QDebug>
 
 #define EC_ADDR_PORT  0x4E
@@ -35,6 +36,9 @@ public:
     bool IoWrite8(quint8 IoIndex,quint8 Data);
     quint32 EcWaitIBE(quint8 CmdPort);
     quint32 EcSendCommand(quint8 CmdPort,quint8 Cmd);
+
+protected:
+    void paintEvent(QPaintEvent *);
 
 private slots:
     void on_ButtonEnter_clicked(void);

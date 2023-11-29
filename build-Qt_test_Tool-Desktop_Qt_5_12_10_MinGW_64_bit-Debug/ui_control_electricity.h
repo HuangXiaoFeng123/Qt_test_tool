@@ -28,7 +28,8 @@ public:
     QGridLayout *gridLayout;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
-    QLabel *label;
+    QSpacerItem *horizontalSpacer_4;
+    QLabel *labelControl;
     QLineEdit *lineEditMin;
     QLabel *label_2;
     QLabel *label_4;
@@ -52,12 +53,22 @@ public:
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        label = new QLabel(Control_Electricity);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setMinimumSize(QSize(70, 0));
-        label->setMaximumSize(QSize(70, 16777215));
+        horizontalSpacer_4 = new QSpacerItem(50, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
-        horizontalLayout->addWidget(label);
+        horizontalLayout->addItem(horizontalSpacer_4);
+
+        labelControl = new QLabel(Control_Electricity);
+        labelControl->setObjectName(QString::fromUtf8("labelControl"));
+        labelControl->setMinimumSize(QSize(70, 0));
+        labelControl->setMaximumSize(QSize(70, 16777215));
+        QFont font;
+        font.setFamily(QString::fromUtf8("Agency FB"));
+        font.setPointSize(11);
+        font.setBold(true);
+        font.setWeight(75);
+        labelControl->setFont(font);
+
+        horizontalLayout->addWidget(labelControl);
 
         lineEditMin = new QLineEdit(Control_Electricity);
         lineEditMin->setObjectName(QString::fromUtf8("lineEditMin"));
@@ -70,10 +81,10 @@ public:
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setMinimumSize(QSize(20, 0));
         label_2->setMaximumSize(QSize(20, 16777215));
-        QFont font;
-        font.setFamily(QString::fromUtf8("\351\273\221\344\275\223"));
-        font.setPointSize(16);
-        label_2->setFont(font);
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("\351\273\221\344\275\223"));
+        font1.setPointSize(16);
+        label_2->setFont(font1);
 
         horizontalLayout->addWidget(label_2);
 
@@ -81,10 +92,10 @@ public:
         label_4->setObjectName(QString::fromUtf8("label_4"));
         label_4->setMinimumSize(QSize(50, 0));
         label_4->setMaximumSize(QSize(50, 16777215));
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("\351\273\221\344\275\223"));
-        font1.setPointSize(24);
-        label_4->setFont(font1);
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("\351\273\221\344\275\223"));
+        font2.setPointSize(24);
+        label_4->setFont(font2);
         label_4->setLayoutDirection(Qt::LeftToRight);
         label_4->setAlignment(Qt::AlignBottom|Qt::AlignHCenter);
 
@@ -101,7 +112,7 @@ public:
         label_3->setObjectName(QString::fromUtf8("label_3"));
         label_3->setMinimumSize(QSize(20, 0));
         label_3->setMaximumSize(QSize(20, 16777215));
-        label_3->setFont(font);
+        label_3->setFont(font1);
 
         horizontalLayout->addWidget(label_3);
 
@@ -118,6 +129,9 @@ public:
         ButtonEnter->setObjectName(QString::fromUtf8("ButtonEnter"));
         ButtonEnter->setMinimumSize(QSize(120, 30));
         ButtonEnter->setMaximumSize(QSize(120, 30));
+        QFont font3;
+        font3.setFamily(QString::fromUtf8("\346\245\267\344\275\223"));
+        ButtonEnter->setFont(font3);
 
         horizontalLayout_2->addWidget(ButtonEnter);
 
@@ -129,6 +143,7 @@ public:
         ButtonExit->setObjectName(QString::fromUtf8("ButtonExit"));
         ButtonExit->setMinimumSize(QSize(120, 30));
         ButtonExit->setMaximumSize(QSize(120, 30));
+        ButtonExit->setFont(font3);
 
         horizontalLayout_2->addWidget(ButtonExit);
 
@@ -151,12 +166,12 @@ public:
     void retranslateUi(QWidget *Control_Electricity)
     {
         Control_Electricity->setWindowTitle(QApplication::translate("Control_Electricity", "Form", nullptr));
-        label->setText(QApplication::translate("Control_Electricity", "\346\216\247\347\224\265\350\214\203\345\233\264\357\274\232", nullptr));
+        labelControl->setText(QApplication::translate("Control_Electricity", "\346\216\247\347\224\265\350\214\203\345\233\264\357\274\232", nullptr));
         label_2->setText(QApplication::translate("Control_Electricity", "%", nullptr));
         label_4->setText(QApplication::translate("Control_Electricity", "~", nullptr));
         label_3->setText(QApplication::translate("Control_Electricity", "%", nullptr));
-        ButtonEnter->setText(QApplication::translate("Control_Electricity", "\350\277\233\345\205\245\346\216\247\347\224\265", nullptr));
-        ButtonExit->setText(QApplication::translate("Control_Electricity", "\351\200\200\345\207\272\346\216\247\347\224\265", nullptr));
+        ButtonEnter->setText(QApplication::translate("Control_Electricity", "Enter_Control", nullptr));
+        ButtonExit->setText(QApplication::translate("Control_Electricity", "Exit_Control", nullptr));
     } // retranslateUi
 
 };
