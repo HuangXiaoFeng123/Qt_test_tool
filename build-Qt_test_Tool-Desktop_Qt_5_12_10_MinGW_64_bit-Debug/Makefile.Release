@@ -19,13 +19,13 @@ CXXFLAGS      = -fno-keep-inline-dllexport -O2 -std=gnu++11 -Wall -W -Wextra -fe
 INCPATH       = -I..\Qt_test_tool -I. -ID:\Qt_File\5.12.10\mingw73_64\include -ID:\Qt_File\5.12.10\mingw73_64\include\QtWidgets -ID:\Qt_File\5.12.10\mingw73_64\include\QtGui -ID:\Qt_File\5.12.10\mingw73_64\include\QtANGLE -ID:\Qt_File\5.12.10\mingw73_64\include\QtCore -Irelease -I. -I/include -ID:\Qt_File\5.12.10\mingw73_64\mkspecs\win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -Wl,-s -Wl,-subsystem,windows -mthreads
-LIBS        =        -LC:\Users\SKU1-6\Desktop\Qt_test_tool\Qt_test_tool -lWinIo64 D:\Qt_File\5.12.10\mingw73_64\lib\libQt5Widgets.a D:\Qt_File\5.12.10\mingw73_64\lib\libQt5Gui.a D:\Qt_File\5.12.10\mingw73_64\lib\libQt5Core.a  -lmingw32 D:\Qt_File\5.12.10\mingw73_64\lib\libqtmain.a -LC:\openssl\lib -LC:\Utils\my_sql\mysql-5.6.11-winx64\lib -LC:\Utils\postgresql\pgsql\lib -lshell32 
+LIBS        =        -LC:\Users\SKU1-6\Desktop\Qt_test_tool\Qt_test_tool -lWinIo64 D:\Qt_File\5.12.10\mingw73_64\lib\libQt5Widgets.a D:\Qt_File\5.12.10\mingw73_64\lib\libQt5Gui.a D:\Qt_File\5.12.10\mingw73_64\lib\libQt5Core.a release\Qt_test_tool_resource_res.o  -lmingw32 D:\Qt_File\5.12.10\mingw73_64\lib\libqtmain.a -LC:\openssl\lib -LC:\Utils\my_sql\mysql-5.6.11-winx64\lib -LC:\Utils\postgresql\pgsql\lib -lshell32 
 QMAKE         = D:\Qt_File\5.12.10\mingw73_64\bin\qmake.exe
 IDC           = idc
 IDL           = midl
 ZIP           = zip -r -9
 DEF_FILE      = 
-RES_FILE      = 
+RES_FILE      = release\Qt_test_tool_resource_res.o
 COPY          = copy /y
 SED           = $(QMAKE) -install sed
 COPY_FILE     = copy /y
@@ -73,8 +73,11 @@ DESTDIR_TARGET = release\Qt_test_tool.exe
 first: all
 all: Makefile.Release  release/Qt_test_tool.exe
 
-release/Qt_test_tool.exe: D:/Qt_File/5.12.10/mingw73_64/lib/libQt5Widgets.a D:/Qt_File/5.12.10/mingw73_64/lib/libQt5Gui.a D:/Qt_File/5.12.10/mingw73_64/lib/libQt5Core.a D:/Qt_File/5.12.10/mingw73_64/lib/libqtmain.a ui_control_electricity.h ui_toolwidget.h $(OBJECTS) 
+release/Qt_test_tool.exe: D:/Qt_File/5.12.10/mingw73_64/lib/libQt5Widgets.a D:/Qt_File/5.12.10/mingw73_64/lib/libQt5Gui.a D:/Qt_File/5.12.10/mingw73_64/lib/libQt5Core.a D:/Qt_File/5.12.10/mingw73_64/lib/libqtmain.a ui_control_electricity.h ui_toolwidget.h $(OBJECTS) release/Qt_test_tool_resource_res.o
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) $(OBJECTS)  $(LIBS)
+
+release/Qt_test_tool_resource_res.o: Qt_test_tool_resource.rc
+	windres -i Qt_test_tool_resource.rc -o release\Qt_test_tool_resource_res.o --include-dir=. $(DEFINES)
 
 qmake: FORCE
 	@$(QMAKE) -o Makefile.Release ..\Qt_test_tool\Qt_test_tool.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -86,6 +89,7 @@ dist:
 
 clean: compiler_clean 
 	-$(DEL_FILE) release\control_electricity.o release\main.o release\toolwidget.o release\qrc_Resources.o release\moc_control_electricity.o release\moc_toolwidget.o
+	-$(DEL_FILE) release\Qt_test_tool_resource_res.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -107,7 +111,8 @@ compiler_rcc_clean:
 	-$(DEL_FILE) release\qrc_Resources.cpp
 release/qrc_Resources.cpp: ../Qt_test_tool/Resources.qrc \
 		D:/Qt_File/5.12.10/mingw73_64/bin/rcc.exe \
-		../Qt_test_tool/image/main_background.jpg
+		../Qt_test_tool/image/main_background.jpg \
+		../Qt_test_tool/image/control.jpg
 	D:\Qt_File\5.12.10\mingw73_64\bin\rcc.exe -name Resources ..\Qt_test_tool\Resources.qrc -o release\qrc_Resources.cpp
 
 compiler_moc_predefs_make_all: release/moc_predefs.h
@@ -228,6 +233,10 @@ release/moc_control_electricity.cpp: ../Qt_test_tool/control_electricity.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/QMessageBox \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qmessagebox.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qdialog.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtGui/QPainter \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtGui/qpainter.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtGui/qtextoption.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtGui/qpen.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/QDebug \
 		release/moc_predefs.h \
 		D:/Qt_File/5.12.10/mingw73_64/bin/moc.exe
@@ -343,13 +352,13 @@ release/moc_toolwidget.cpp: ../Qt_test_tool/toolwidget.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/QMessageBox \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qmessagebox.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qdialog.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/QDebug \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/QProcess \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qprocess.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtGui/QPainter \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtGui/qpainter.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtGui/qtextoption.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtGui/qpen.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/QDebug \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/QProcess \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qprocess.h \
 		release/moc_predefs.h \
 		D:/Qt_File/5.12.10/mingw73_64/bin/moc.exe
 	D:\Qt_File\5.12.10\mingw73_64\bin\moc.exe $(DEFINES) --include C:/Users/SKU1-6/Desktop/Qt_test_tool/build-Qt_test_tool-Desktop_Qt_5_12_10_MinGW_64_bit-Debug/release/moc_predefs.h -ID:/Qt_File/5.12.10/mingw73_64/mkspecs/win32-g++ -IC:/Users/SKU1-6/Desktop/Qt_test_tool/Qt_test_tool -ID:/Qt_File/5.12.10/mingw73_64/include -ID:/Qt_File/5.12.10/mingw73_64/include/QtWidgets -ID:/Qt_File/5.12.10/mingw73_64/include/QtGui -ID:/Qt_File/5.12.10/mingw73_64/include/QtANGLE -ID:/Qt_File/5.12.10/mingw73_64/include/QtCore -I. -ID:/Qt_File/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -ID:/Qt_File/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -ID:/Qt_File/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -ID:/Qt_File/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -ID:/Qt_File/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -ID:/Qt_File/Tools/mingw730_64/x86_64-w64-mingw32/include ..\Qt_test_tool\toolwidget.h -o release\moc_toolwidget.cpp
@@ -490,37 +499,12 @@ release/control_electricity.o: ../Qt_test_tool/control_electricity.cpp ../Qt_tes
 		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/QMessageBox \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qmessagebox.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qdialog.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/QDebug \
-		ui_control_electricity.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/QVariant \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/QApplication \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qapplication.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qcoreapplication.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qeventloop.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qdesktopwidget.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtGui/qguiapplication.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtGui/qinputmethod.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/QGridLayout \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qgridlayout.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qlayout.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qlayoutitem.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qboxlayout.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/QHBoxLayout \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/QLabel \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qlabel.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qframe.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/QLineEdit \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qlineedit.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtGui/qtextcursor.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtGui/qtextformat.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtGui/qpen.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtGui/QPainter \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtGui/qpainter.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtGui/qtextoption.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/QPushButton \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qpushbutton.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qabstractbutton.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtGui/qicon.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/QSpacerItem \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/QVBoxLayout
+		D:/Qt_File/5.12.10/mingw73_64/include/QtGui/qpen.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/QDebug \
+		ui_control_electricity.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\control_electricity.o ..\Qt_test_tool\control_electricity.cpp
 
 release/main.o: ../Qt_test_tool/main.cpp ../Qt_test_tool/toolwidget.h \
@@ -633,13 +617,13 @@ release/main.o: ../Qt_test_tool/main.cpp ../Qt_test_tool/toolwidget.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/QMessageBox \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qmessagebox.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qdialog.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/QDebug \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/QProcess \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qprocess.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtGui/QPainter \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtGui/qpainter.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtGui/qtextoption.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtGui/qpen.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/QDebug \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/QProcess \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qprocess.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/QApplication \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qapplication.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qcoreapplication.h \
@@ -759,34 +743,14 @@ release/toolwidget.o: ../Qt_test_tool/toolwidget.cpp ../Qt_test_tool/toolwidget.
 		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/QMessageBox \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qmessagebox.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qdialog.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/QDebug \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/QProcess \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qprocess.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtGui/QPainter \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtGui/qpainter.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtGui/qtextoption.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtGui/qpen.h \
-		ui_toolwidget.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/QVariant \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/QApplication \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qapplication.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qcoreapplication.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qeventloop.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qdesktopwidget.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtGui/qguiapplication.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtGui/qinputmethod.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/QGridLayout \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qgridlayout.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qlayout.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qlayoutitem.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qboxlayout.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/QHBoxLayout \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/QPushButton \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qpushbutton.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qabstractbutton.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtGui/qicon.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/QSpacerItem \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/QVBoxLayout
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/QDebug \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/QProcess \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qprocess.h \
+		ui_toolwidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\toolwidget.o ..\Qt_test_tool\toolwidget.cpp
 
 release/qrc_Resources.o: release/qrc_Resources.cpp 

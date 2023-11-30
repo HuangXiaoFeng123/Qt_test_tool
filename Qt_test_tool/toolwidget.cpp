@@ -4,7 +4,7 @@
 ToolWidget::ToolWidget(QWidget *parent): QWidget(parent), ui(new Ui::ToolWidget)
 {
     ui->setupUi(this);
-    setWindowTitle("Tool v0.08");
+    setWindowTitle("Tool v0.09");
     setMinimumSize(300,330);
     setMaximumSize(300,330);
     count=0;

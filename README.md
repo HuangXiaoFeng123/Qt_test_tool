@@ -1,5 +1,7 @@
 # Qt_test_tool£¨This tool base on ITE ec chip£©
 --------------------------------------------------
+9.Adding ico logo in exe file.
+--------------------------------------------------
 8.Adding UI background.
 --------------------------------------------------
 7.Optimizing control electricity UI function.
